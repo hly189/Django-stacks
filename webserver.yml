@@ -1,0 +1,4 @@
+- hosts: lamp-webserver
+  roles:
+   - web
+   - common

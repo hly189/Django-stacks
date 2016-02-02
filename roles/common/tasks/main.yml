@@ -1,0 +1,20 @@
+---
+- name: update apt cached
+  sudo: yes
+  apt: update_cache=yes cache_valid_time=3600
+
+- name: set up main tasks for webserver
+  sudo: yes
+  apt: name={{ item }} state=installed
+  with_items:
+   - git 
+   - autoconf
+   - binutils
+   - bison
+   - build-essential
+   - flex
+   - libjpeg-dev
+   - libpng-dev
+   - libxml2-dev
+   - libxslt1-dev
+   - libmemcached-dev

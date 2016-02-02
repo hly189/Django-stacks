@@ -1,0 +1,15 @@
+---
+- name: update apt cached
+  sudo: yes
+  apt: update_cache=yes cache_valid_time=3600
+
+- name: set up PostgreSQL/and restarted it
+  sudo: yes
+  apt: pkg={{ item }} state=installed
+  with_items:
+   - postgresql
+   - postgresql-contrib
+   - libpq-dev
+   - python-psycopg2
+  notify: 
+   - restart postgresql
